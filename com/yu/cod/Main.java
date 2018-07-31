@@ -11,35 +11,35 @@ import java.util.List;
 public class Main {
 	
 	
-	//����Ŀ¼
+	//处理目录
 	static String file_path = "C:\\workspace2\\CallOfDuty\\resource";
-	//�ļ�����β������׺��
+	//文件名结尾（含后缀）
 	static String file_end = ".txt";
-	//�ļ�����ͷ
+	//文件名开头
 	static String file_start = "";
-	//�ļ�������
+	//文件名包含
 	static String file_like = "";
 	
-	//�ؼ��ֿ�ͷ
+	//关键字开头
 	static String word_start = "��";
-	//�ؼ��ֽ�β
+	//关键字结尾
 	static String word_end = "��";
-	//�ؼ��ְ���
+	//关键字包含
 	static String word_like = "��";
 	
-	//��������ַ�
+	//间隔字符
 	static char[] char_split = {' ','\'',','};
-	//����ַ���
+	//间隔字符串
 	static String[] word_split = {};
 	
-	//����xml��·��
+	//保存xml的路径
 	static String xml_path = "";
-	//����Ԫ�ر�ǩ��
+	//查找元素标签名
 	static String xml_tag = "item"; 
 	
 	
 	/**
-	 * ƥ�����ַ����ַ���
+	 * 查找目录下匹配的文件
 	 * @param c
 	 * @param s
 	 * @return
@@ -60,7 +60,7 @@ public class Main {
 	}
 	
 	/**
-	 * ����Ŀ¼��ƥ����ļ�
+	 * 查找目录下匹配的文件
 	 * @param path
 	 * @return
 	 */
@@ -86,7 +86,7 @@ public class Main {
 	}
 	
 	/**
-	 * ��ȡ�ļ��������ı�
+	 * 读取文件并返回文本
 	 * @param file
 	 * @return
 	 */
@@ -115,7 +115,7 @@ public class Main {
 	}
 	
 	/**
-	 * �����ļ���ƥ����ַ���,���ݿ�ͷ����
+	 * 查找文件中匹配的字符串,根据开头查找
 	 * @param content
 	 * @return
 	 */
@@ -123,8 +123,8 @@ public class Main {
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
-		int start = 0;//�ؼ�����ʼ�±�
-		int ender = 0;//�����ַ���β��
+		int start = 0;//关键字起始下标
+		int ender = 0;//连续字符串尾部
 		while(start!=-1){
 			start = content.indexOf(word_start, start);
 			ender = start;
@@ -146,7 +146,7 @@ public class Main {
 	}
 
 	/**
-	 * �����ļ���ƥ����ַ���,���ݽ�β����
+	 * 查找文件中匹配的字符串,根据结尾查找
 	 * @param content
 	 * @return
 	 */
@@ -155,8 +155,8 @@ public class Main {
 		String sub = null;
 		char[] chars = content.toCharArray();
 		
-		int start = 0;//�ؼ�����ʼ�±�
-		int hearder = 0;//�����ַ���ͷ��
+		int start = 0;//关键字起始下标
+		int hearder = 0;//连续字符串头部
 		while(start!=-1){
 			start = content.indexOf(word_end, start);
 			if((hearder = start)>-1){
@@ -178,7 +178,7 @@ public class Main {
 	}
 	
 	/**
-	 * �����ļ���ƥ����ַ���,���ݰ����ؼ��ֲ���
+	 * 查找文件中匹配的字符串,根据包含关键字查找
 	 * @param content
 	 * @return
 	 */
@@ -186,9 +186,9 @@ public class Main {
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
-		int start = 0;//�ؼ�����ʼ�±�
-		int hearder = 0;//�����ַ���ͷ��
-		int ender = 0;//�����ַ���β��
+		int start = 0;//关键字起始下标
+		int hearder = 0;//连续字符串头部
+		int ender = 0;//连续字符串尾部
 		while(start!=-1){
 			start = content.indexOf(word_like, start);
 			if((hearder = start)>-1){
@@ -216,7 +216,7 @@ public class Main {
 	
 	
 	/**
-	 * ����xml�ı�
+	 * 生成xml文本
 	 * @param list
 	 * @return
 	 */
@@ -245,12 +245,6 @@ public class Main {
 		}
 		
 		return xml.toString();
-	}
-	
-	public static void main(String[] args) {
-		Main m = new Main();
-		String content = m.toXml(m.findFiles(file_path),3);
-		System.out.println(content);
 	}
 	
 }
