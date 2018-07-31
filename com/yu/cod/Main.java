@@ -12,7 +12,7 @@ public class Main {
 	
 	
 	//处理目录
-	static String file_path = "C:\\workspace2\\CallOfDuty\\resource";
+	static String file_path = "C:\\Users\\yl\\Documents\\resource";
 	//文件名结尾（含后缀）
 	static String file_end = ".txt";
 	//文件名开头
@@ -21,11 +21,11 @@ public class Main {
 	static String file_like = "";
 	
 	//关键字开头
-	static String word_start = "��";
+	static String word_start = "北";
 	//关键字结尾
-	static String word_end = "��";
+	static String word_end = "市";
 	//关键字包含
-	static String word_like = "��";
+	static String word_like = "男";
 	
 	//间隔字符
 	static char[] char_split = {' ','\'',','};
