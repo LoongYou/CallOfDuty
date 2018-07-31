@@ -11,35 +11,35 @@ import java.util.List;
 public class Main {
 	
 	
-	//´¦ÀíÄ¿Â¼
+	//ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
 	static String file_path = "C:\\workspace2\\CallOfDuty\\resource";
-	//ÎÄ¼þÃû½áÎ²£¨º¬ºó×º£©
+	//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ºï¿½ï¿½
 	static String file_end = ".txt";
-	//ÎÄ¼þÃû¿ªÍ·
+	//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Í·
 	static String file_start = "";
-	//ÎÄ¼þÃû°üº¬
+	//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	static String file_like = "";
 	
-	//¹Ø¼ü×Ö¿ªÍ·
-	static String word_start = "±±";
-	//¹Ø¼ü×Ö½áÎ²
-	static String word_end = "ÊÐ";
-	//¹Ø¼ü×Ö°üº¬
-	static String word_like = "ÄÐ";
+	//ï¿½Ø¼ï¿½ï¿½Ö¿ï¿½Í·
+	static String word_start = "ï¿½ï¿½";
+	//ï¿½Ø¼ï¿½ï¿½Ö½ï¿½Î²
+	static String word_end = "ï¿½ï¿½";
+	//ï¿½Ø¼ï¿½ï¿½Ö°ï¿½ï¿½ï¿½
+	static String word_like = "ï¿½ï¿½";
 	
-	//¼ä¸ôµ¥¸ö×Ö·û
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
 	static char[] char_split = {' ','\'',','};
-	//¼ä¸ô×Ö·û´®
+	//ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	static String[] word_split = {};
 	
-	//±£´æxmlµÄÂ·¾¶
+	//ï¿½ï¿½ï¿½ï¿½xmlï¿½ï¿½Â·ï¿½ï¿½
 	static String xml_path = "";
-	//²éÕÒÔªËØ±êÇ©Ãû
+	//ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø±ï¿½Ç©ï¿½ï¿½
 	static String xml_tag = "item"; 
 	
 	
 	/**
-	 * Æ¥Åä¼ä¸ô×Ö·ûºÍ×Ö·û´®
+	 * Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	 * @param c
 	 * @param s
 	 * @return
@@ -60,7 +60,7 @@ public class Main {
 	}
 	
 	/**
-	 * ²éÕÒÄ¿Â¼ÏÂÆ¥ÅäµÄÎÄ¼þ
+	 * ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 	 * @param path
 	 * @return
 	 */
@@ -86,7 +86,7 @@ public class Main {
 	}
 	
 	/**
-	 * ¶ÁÈ¡ÎÄ¼þ²¢·µ»ØÎÄ±¾
+	 * ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 	 * @param file
 	 * @return
 	 */
@@ -115,7 +115,7 @@ public class Main {
 	}
 	
 	/**
-	 * ²éÕÒÎÄ¼þÖÐÆ¥ÅäµÄ×Ö·û´®,¸ù¾Ý¿ªÍ·²éÕÒ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ý¿ï¿½Í·ï¿½ï¿½ï¿½ï¿½
 	 * @param content
 	 * @return
 	 */
@@ -123,8 +123,8 @@ public class Main {
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
-		int start = 0;//¹Ø¼ü×ÖÆðÊ¼ÏÂ±ê
-		int ender = 0;//Á¬Ðø×Ö·û´®Î²²¿
+		int start = 0;//ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Â±ï¿½
+		int ender = 0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Î²ï¿½ï¿½
 		while(start!=-1){
 			start = content.indexOf(word_start, start);
 			ender = start;
@@ -146,7 +146,7 @@ public class Main {
 	}
 
 	/**
-	 * ²éÕÒÎÄ¼þÖÐÆ¥ÅäµÄ×Ö·û´®,¸ù¾Ý½áÎ²²éÕÒ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ý½ï¿½Î²ï¿½ï¿½ï¿½ï¿½
 	 * @param content
 	 * @return
 	 */
@@ -155,8 +155,8 @@ public class Main {
 		String sub = null;
 		char[] chars = content.toCharArray();
 		
-		int start = 0;//¹Ø¼ü×ÖÆðÊ¼ÏÂ±ê
-		int hearder = 0;//Á¬Ðø×Ö·û´®Í·²¿
+		int start = 0;//ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Â±ï¿½
+		int hearder = 0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Í·ï¿½ï¿½
 		while(start!=-1){
 			start = content.indexOf(word_end, start);
 			if((hearder = start)>-1){
@@ -178,7 +178,7 @@ public class Main {
 	}
 	
 	/**
-	 * ²éÕÒÎÄ¼þÖÐÆ¥ÅäµÄ×Ö·û´®,¸ù¾Ý°üº¬¹Ø¼ü×Ö²éÕÒ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½Ö²ï¿½ï¿½ï¿½
 	 * @param content
 	 * @return
 	 */
@@ -186,9 +186,9 @@ public class Main {
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
-		int start = 0;//¹Ø¼ü×ÖÆðÊ¼ÏÂ±ê
-		int hearder = 0;//Á¬Ðø×Ö·û´®Í·²¿
-		int ender = 0;//Á¬Ðø×Ö·û´®Î²²¿
+		int start = 0;//ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Â±ï¿½
+		int hearder = 0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Í·ï¿½ï¿½
+		int ender = 0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Î²ï¿½ï¿½
 		while(start!=-1){
 			start = content.indexOf(word_like, start);
 			if((hearder = start)>-1){
@@ -216,7 +216,7 @@ public class Main {
 	
 	
 	/**
-	 * Éú³ÉxmlÎÄ±¾
+	 * ï¿½ï¿½ï¿½ï¿½xmlï¿½Ä±ï¿½
 	 * @param list
 	 * @return
 	 */
