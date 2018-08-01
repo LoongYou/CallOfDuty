@@ -8,46 +8,65 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author yulong
+ * @2018年8月1日下午11:01:10
+ */
 public class Main {
 	
 	
-	//处理目录
+	/**处理目录*/
 	static String file_path = "C:\\Users\\yl\\Documents\\resource";
-	//文件名结尾（含后缀）
+
+	/**文件名结尾（含后缀）*/
 	static String file_end = ".txt";
-	//文件名开头
+
+	/**文件名开头*/
 	static String file_start = "";
-	//文件名包含
+
+	/**文件名包含*/
 	static String file_like = "";
 	
-	//关键字开头
+	/**关键字开头*/
 	static String word_start = "北";
-	//关键字结尾
+
+	/**关键字结尾*/
 	static String word_end = "市";
-	//关键字包含
+
+	/**关键字包含*/
 	static String word_like = "男";
 	
-	//间隔字符
-	static char[] char_split = {' ','\'',','};
-	//间隔字符串
+	/**间隔字符*/
+	static char[] char_split = {'\'',' '};
+
+	/**间隔字符串*/
 	static String[] word_split = {};
+
+	/**是否便利间隔元组，通常情况下为true，除非你十分确定元组的第一个元素能够首次命中，
+	否则可能导致长时间运行并且得不到预想的结果*/
+	static boolean splitAll = true;
 	
-	//保存xml的路径
+	/**保存xml的路径*/
 	static String xml_path = "";
-	//查找元素标签名
+
+	/**查找元素标签名*/
 	static String xml_tag = "item"; 
 	
-	
+
 	/**
-	 * 查找目录下匹配的文件
+	 * 
 	 * @param c
-	 * @param s
+	 * @param cs
+	 * @param index
 	 * @return
 	 */
 	public static boolean matchSplit(char c,char[] cs,int index){
 		for(char item:char_split){
 			if(item==c)
 				return true;
+			if(!splitAll)
+				break;
 		}
 		for(String item:word_split){
 			if(index+item.length()>=cs.length)
@@ -55,6 +74,8 @@ public class Main {
 			String str = String.copyValueOf(cs, index, item.length());
 			if(item.equals(str))
 				return true;
+			if(!splitAll)
+				break;
 		}
 		return false;
 	}
