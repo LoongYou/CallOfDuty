@@ -7,6 +7,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -53,12 +54,15 @@ public class Main {
 	/**查找元素标签名*/
 	static String xml_tag = "item"; 
 	
-
+	static String sub_patt = "";
+	
+	static String file_patt = "";
+	
 	/**
-	 * 
-	 * @param c
-	 * @param cs
-	 * @param index
+	 * 匹配间隔符/间隔字符，优先匹配字符元组再到字符串元组
+	 * @param c 匹配的字符
+	 * @param cs 匹配的字符串
+	 * @param index 当前的c在cs中的下标
 	 * @return
 	 */
 	public static boolean matchSplit(char c,char[] cs,int index){
@@ -93,15 +97,17 @@ public class Main {
 			
 			@Override
 			public boolean accept(File arg0, String arg1) {
-				if(file_end.equals(".*")||arg1.endsWith(file_end))
+				if(file_end.equals(".*")||arg1.endsWith(file_end)||(file_patt!=null&&!file_patt.equals("")&&Pattern.matches(file_patt,arg1)))
 					return true;
 				else
 					return false;
 			}
 		});
-		for(File item:list){
-			if(item.isDirectory()==false)
-				temp.add(item);
+		if(list!=null){
+			for(File item:list){
+				if(item.isDirectory()==false)
+					temp.add(item);
+			}			
 		}
 		return temp;
 	}
@@ -120,12 +126,11 @@ public class Main {
 			while(null != (line = reader.readLine())){
 				sb.append(line);
 			}
-			reader.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			try {
-				reader.close();
+				if(reader!=null)reader.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -239,6 +244,7 @@ public class Main {
 	/**
 	 * 生成xml文本
 	 * @param list
+	 * @param model 工作模式：1 根据开头查找  2 结尾  3 包含
 	 * @return
 	 */
 	public String toXml(List<File> list,int model){
@@ -258,9 +264,11 @@ public class Main {
 				break;
 			case 3:result = searchTextByKey(content);
 			}
-			for(String item:result){
-				if(item!=null&&!item.toString().equals(""))
-					xml.append("\t<"+xml_tag+">").append(item).append("</"+xml_tag+">\n");
+			if(result!=null){
+				for(String item:result){
+					if(item!=null&&!item.equals("")||(sub_patt!=null&&!sub_patt.equals("")&&Pattern.matches(sub_patt,item)))
+						xml.append("\t<"+xml_tag+">").append(item).append("</"+xml_tag+">\n");
+				}				
 			}
 			xml.append("</file>\n");
 		}
