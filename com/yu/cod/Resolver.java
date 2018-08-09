@@ -10,53 +10,13 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * 
+ * 文本解析器，封装各种解析手段
+ * <p>务必确保解析器封装的各种解析方法都是无副作用的纯函数
  * @author yulong
  * @2018年8月1日下午11:01:10
  */
-public class Main {
+public class Resolver implements Constants{
 	
-	
-	/**处理目录*/
-	static String file_path = "C:\\Users\\yl\\Documents\\resource";
-
-	/**文件名结尾（含后缀）*/
-	static String file_end = ".txt";
-
-	/**文件名开头*/
-	static String file_start = "";
-
-	/**文件名包含*/
-	static String file_like = "";
-	
-	/**关键字开头*/
-	static String word_start = "北";
-
-	/**关键字结尾*/
-	static String word_end = "市";
-
-	/**关键字包含*/
-	static String word_like = "男";
-	
-	/**间隔字符*/
-	static char[] char_split = {'\'',' '};
-
-	/**间隔字符串*/
-	static String[] word_split = {};
-
-	/**是否便利间隔元组，通常情况下为true，除非你十分确定元组的第一个元素能够首次命中，
-	否则可能导致长时间运行并且得不到预想的结果*/
-	static boolean splitAll = true;
-	
-	/**保存xml的路径*/
-	static String xml_path = "";
-
-	/**查找元素标签名*/
-	static String xml_tag = "item"; 
-	
-	static String sub_patt = "";
-	
-	static String file_patt = "";
 	
 	/**
 	 * 匹配间隔符/间隔字符，优先匹配字符元组再到字符串元组
@@ -65,7 +25,7 @@ public class Main {
 	 * @param index 当前的c在cs中的下标
 	 * @return
 	 */
-	public static boolean matchSplit(char c,char[] cs,int index){
+	public final static boolean matchSplit(char c,char[] cs,int index){
 		for(char item:char_split){
 			if(item==c)
 				return true;
@@ -89,7 +49,7 @@ public class Main {
 	 * @param path
 	 * @return
 	 */
-	public List<File> findFiles(String path){
+	public final static List<File> findFiles(String path){
 		File[] list = null;
 		List<File> temp = new ArrayList<File>();
 		File file = new File(path);
@@ -117,7 +77,7 @@ public class Main {
 	 * @param file
 	 * @return
 	 */
-	public String read(File file){
+	public static final String read(File file){
 		BufferedReader reader = null;
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -145,7 +105,7 @@ public class Main {
 	 * @param content
 	 * @return
 	 */
-	public List<String> searchTextByStart(String content){
+	public static final List<String> searchTextByStart(String content){
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
@@ -161,7 +121,7 @@ public class Main {
 					ender++;
 				}
 				if(start>-1)
-					sub = new String(content.substring(start,ender));
+					sub = subString(start,ender,content);
 				list.add(sub);
 				if(start!=-1)
 					start++;
@@ -176,7 +136,7 @@ public class Main {
 	 * @param content
 	 * @return
 	 */
-	public List<String> searchTextByEnd(String content){
+	public static final List<String> searchTextByEnd(String content){
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
@@ -191,7 +151,7 @@ public class Main {
 					c = chars[hearder-1];
 					hearder--;
 				}
-				sub = new String(content.substring(hearder+1,start+word_end.length()));
+				sub = subString(hearder+1,start+word_end.length(),content);
 				list.add(sub);
 				if(start!=-1)
 					start++;
@@ -208,7 +168,7 @@ public class Main {
 	 * @param content
 	 * @return
 	 */
-	public List<String> searchTextByKey(String content){
+	public static final List<String> searchTextByKey(String content){
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
@@ -229,8 +189,7 @@ public class Main {
 					c = chars[ender+1];
 					ender++;
 				}
-				sub = new String(content.substring(hearder+1,ender));
-				//System.out.println(sub+hearder+" "+ender);
+				sub = subString(hearder+1,ender,content);
 				list.add(sub);								
 				if(start!=-1)
 					start++;
@@ -240,40 +199,17 @@ public class Main {
 		return list;
 	}
 	
-	
 	/**
-	 * 生成xml文本
-	 * @param list
-	 * @param model 工作模式：1 根据开头查找  2 结尾  3 包含
+	 * 根据前后下标截取字符串
+	 * @param start
+	 * @param end
+	 * @param content
 	 * @return
 	 */
-	public String toXml(List<File> list,int model){
-		if(list==null)
-			return null;
-		StringBuilder xml = new StringBuilder();
-		xml.append("<?xml version=\"1.0\"> encoding=\"UTF-8\"?>\n");
-		
-		for(File file:list){
-			xml.append("file name=\""+file.getName()+"\">\n");
-			String content = read(file);
-			List<String> result = null;
-			switch(model){
-			case 1:result = searchTextByStart(content);
-				break;
-			case 2:result = searchTextByEnd(content);
-				break;
-			case 3:result = searchTextByKey(content);
-			}
-			if(result!=null){
-				for(String item:result){
-					if(item!=null&&!item.equals("")||(sub_patt!=null&&!sub_patt.equals("")&&Pattern.matches(sub_patt,item)))
-						xml.append("\t<"+xml_tag+">").append(item).append("</"+xml_tag+">\n");
-				}				
-			}
-			xml.append("</file>\n");
-		}
-		
-		return xml.toString();
+	private static final String subString(int start,int end,String content){
+		if(end-start<1||end-start>=sub_length)
+			return "匹配内容太长或没有";
+		return new String(content.substring(start,end));
 	}
 	
 }
