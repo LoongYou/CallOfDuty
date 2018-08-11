@@ -1,4 +1,4 @@
-package com.yu.cod;
+package com.yu.callofduty.core;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.yu.callofduty.core.interfaces.Constants;
+
 /**
  * 文本解析器，封装各种解析手段
  * <p>务必确保解析器封装的各种解析方法都是无副作用的纯函数
  * @author yulong
  * @2018年8月1日下午11:01:10
  */
-public class BaseResolver implements Constants{
+public class BaseTextResolver implements Constants{
 	
 	
 	/**

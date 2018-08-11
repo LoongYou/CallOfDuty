@@ -1,11 +1,11 @@
-package com.yu.cod;
+package com.yu.callofduty.core;
 
 public class TargetSet {
 	/**处理目录*/
-	private String file_path = "C:\\Users\\yl\\Documents\\resource";
+	private String file_path = "D:\\workspace2\\CallOfDuty\\testfile";
 
 	/**文件名结尾（含后缀）*/
-	private String file_end = ".txt";
+	private String file_end = ".java";
 
 	/**文件名开头*/
 	private String file_start = "";
@@ -23,13 +23,13 @@ public class TargetSet {
 	private String dir_like = "";
 	
 	/**关键字开头*/
-	private String word_start = "北";
+	private String word_start = "map";
 
 	/**关键字结尾*/
-	private String word_end = "市";
+	private String word_end = "map";
 
 	/**关键字包含*/
-	private String word_like = "男";
+	private String word_like = "map";
 	
 	/**间隔字符*/
 	private char[] char_split = {'\'',' '};

@@ -1,11 +1,13 @@
-package com.yu.cod;
+package com.yu.callofduty.core.util;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Util implements Constants{
+import com.yu.callofduty.core.interfaces.Constants;
+
+public class FileUtil implements Constants{
 	/**
 	 * 读取文件并返回文本
 	 * @param file

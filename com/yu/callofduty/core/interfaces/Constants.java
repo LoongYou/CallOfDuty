@@ -1,4 +1,4 @@
-package com.yu.cod;
+package com.yu.callofduty.core.interfaces;
 
 /**
  * 

@@ -1,10 +1,13 @@
-package com.yu.cod;
+package com.yu.callofduty.core;
 
 import java.io.File;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class Builder implements Constants{
+import com.yu.callofduty.core.interfaces.Constants;
+import com.yu.callofduty.core.util.FileUtil;
+
+public class XMLBuilder implements Constants{
 	/**
 	 * 生成xml文本
 	 * @param list
@@ -15,18 +18,18 @@ public class Builder implements Constants{
 		if(list==null)
 			return null;
 		StringBuilder xml = new StringBuilder();
-		xml.append("<?xml version=\"1.0\"> encoding=\"UTF-8\"?>\n");
+		xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		
 		for(File file:list){
 			xml.append("file name=\""+file.getName()+"\">\n");
-			String content = Util.read(file);
+			String content = FileUtil.read(file);
 			List<String> result = null;
 			switch(model){
-			case 1:result = BaseResolver.searchTextByStart(content,tar);
+			case 1:result = BaseTextResolver.searchTextByStart(content,tar);
 				break;
-			case 2:result = BaseResolver.searchTextByEnd(content,tar);
+			case 2:result = BaseTextResolver.searchTextByEnd(content,tar);
 				break;
-			case 3:result = BaseResolver.searchTextByKey(content,tar);
+			case 3:result = BaseTextResolver.searchTextByKey(content,tar);
 			}
 			if(result!=null){
 				for(String item:result){
