@@ -21,8 +21,8 @@ public class XMLBuilder implements Constants{
 		xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		
 		for(File file:list){
-			xml.append("file name=\""+file.getName()+"\">\n");
-			String content = FileUtil.read(file);
+			xml.append("<file name=\""+file.getName()+"\">\n");
+			String content = FileUtil.readByByte(file);
 			List<String> result = null;
 			switch(model){
 			case 1:result = BaseTextResolver.searchTextByStart(content,tar);
@@ -33,6 +33,7 @@ public class XMLBuilder implements Constants{
 			}
 			if(result!=null){
 				for(String item:result){
+					//System.out.println(item);
 					if(item!=null&&!item.equals("")||(tar.getSub_patt()!=null&&!tar.getSub_patt().equals("")&&Pattern.matches(tar.getSub_patt(),item)))
 						xml.append("\t<"+tar.getXml_path()+">").append(item).append("</"+tar.getXml_path()+">\n");
 				}				

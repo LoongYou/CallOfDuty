@@ -23,19 +23,19 @@ public class TargetSet {
 	private String dir_like = "";
 	
 	/**关键字开头*/
-	private String word_start = "map";
+	private String word_start = "import";
 
 	/**关键字结尾*/
-	private String word_end = "map";
+	private String word_end = "}";
 
 	/**关键字包含*/
-	private String word_like = "map";
+	private String word_like = "new";
 	
 	/**间隔字符*/
-	private char[] char_split = {'\'',' '};
+	private char[] char_split = {};
 
 	/**间隔字符串*/
-	private String[] word_split = {};
+	private String[] word_split = {";"};
 
 	/**是否遍历间隔元组，通常情况下为true，除非你十分确定元组的第一个元素能够在短距离内命中，
 	否则可能导致长时间运行，并且得不到预想的结果*/
@@ -57,7 +57,7 @@ public class TargetSet {
 	private String dir_patt = "";
 	 
 	 /**搜索匹配长度限制*/
-	private int sub_length = 100;
+	private int sub_length = 1000;
 	 
 	 /**递归目录最大层数*/
 	private int dir_deep = 20;
