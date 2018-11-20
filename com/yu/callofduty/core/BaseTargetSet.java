@@ -1,48 +1,43 @@
 package com.yu.callofduty.core;
 
+/**
+ * 封装作业基础参数
+ * @author yl
+ *
+ */
 public class BaseTargetSet {
-	 /**搜索匹配长度限制*/
+	
+	/** 搜索匹配长度限制 */
 	private int sub_length = 1000;
-	 /**搜索匹配正则*/
-		private String sub_patt = "";
-		 
-		 /**文件名正则*/
-		private String file_patt = "";
-		 
-		 /**目录名正则*/
-		private String dir_patt = "";
+	
+	/** 搜索匹配正则 */
+	private String patt_search = "";
 
-		public int getSub_length() {
-			return sub_length;
-		}
+	/** 名称正则 */
+	private String patt_name = "";
 
-		public void setSub_length(int sub_length) {
-			this.sub_length = sub_length;
-		}
+	public int getSub_length() {
+		return sub_length;
+	}
 
-		public String getSub_patt() {
-			return sub_patt;
-		}
+	public void setSub_length(int sub_length) {
+		this.sub_length = sub_length;
+	}
 
-		public void setSub_patt(String sub_patt) {
-			this.sub_patt = sub_patt;
-		}
+	public String getPatt_search() {
+		return patt_search;
+	}
 
-		public String getFile_patt() {
-			return file_patt;
-		}
+	public void setPatt_search(String patt_search) {
+		this.patt_search = patt_search;
+	}
 
-		public void setFile_patt(String file_patt) {
-			this.file_patt = file_patt;
-		}
+	public String getPatt_name() {
+		return patt_name;
+	}
 
-		public String getDir_patt() {
-			return dir_patt;
-		}
+	public void setPatt_name(String patt_name) {
+		this.patt_name = patt_name;
+	}
 
-		public void setDir_patt(String dir_patt) {
-			this.dir_patt = dir_patt;
-		}
-		
-		
 }

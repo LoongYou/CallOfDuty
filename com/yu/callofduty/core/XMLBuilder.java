@@ -35,7 +35,7 @@ public class XMLBuilder implements Constants{
 			if(result!=null){
 				for(String item:result){
 					//System.out.println(item);
-					if(item!=null&&!item.equals("")||(tar.getSub_patt()!=null&&!tar.getSub_patt().equals("")&&Pattern.matches(tar.getSub_patt(),item)))
+					if(item!=null&&!item.equals("")||(tar.getPatt_search()!=null&&!tar.getPatt_search().equals("")&&Pattern.matches(tar.getPatt_search(),item)))
 						xml.append("\t<"+GeneralConfig.getXml_path()+">").append(item).append("</"+GeneralConfig.getXml_path()+">\n");
 				}				
 			}

@@ -1,5 +1,10 @@
 package com.yu.callofduty.core;
 
+/**
+ * 封装文本作业参数
+ * @author yl
+ *
+ */
 public class TextTargetSet extends BaseTargetSet{
 	
 	/**关键字开头*/

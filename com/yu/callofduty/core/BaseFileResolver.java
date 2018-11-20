@@ -23,7 +23,7 @@ public class BaseFileResolver {
 	 * @param path
 	 * @return
 	 */
-	public static final List<File> findDirs(FileTargetSet tar) {
+	public static final List<File> findDirs(DirTargetSet dts) {
 		File[] list = null;
 		List<File> temp = new ArrayList<File>();
 		File file = new File(GeneralConfig.getFile_path());
@@ -31,8 +31,8 @@ public class BaseFileResolver {
 
 			@Override
 			public boolean accept(File arg0, String arg1) {
-				if (tar.getDir_end().equals(".*") || arg1.endsWith(tar.getDir_end()) || 
-						(tar.getDir_patt() != null && !tar.getDir_patt().equals("") && Pattern.matches(tar.getDir_patt(), arg1)))
+				if (dts.getDir_end().equals(".*") || arg1.endsWith(dts.getDir_end()) || 
+						(dts.getPatt_name() != null && !dts.getPatt_name().equals("") && Pattern.matches(dts.getPatt_name(), arg1)))
 					return true;
 				else
 					return false;
@@ -53,7 +53,7 @@ public class BaseFileResolver {
 	 * @param path
 	 * @return
 	 */
-	public final static List<File> findFiles(FileTargetSet tar) {
+	public final static List<File> findFiles(FileTargetSet fts) {
 		File[] list = null;
 		List<File> temp = new ArrayList<File>();
 		File file = new File(GeneralConfig.getFile_path());
@@ -61,8 +61,8 @@ public class BaseFileResolver {
 
 			@Override
 			public boolean accept(File arg0, String arg1) {
-				if (tar.getFile_end().equals(".*") || arg1.endsWith(tar.getFile_end()) || 
-						(tar.getFile_patt() != null && !tar.getFile_patt().equals("") && Pattern.matches(tar.getFile_patt(), arg1)))
+				if (fts.getFile_end().equals(".*") || arg1.endsWith(fts.getFile_end()) || 
+						(fts.getPatt_name() != null && !fts.getPatt_name().equals("") && Pattern.matches(fts.getPatt_name(), arg1)))
 					return true;
 				else
 					return false;
