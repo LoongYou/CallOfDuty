@@ -21,7 +21,7 @@ public class BaseTextResolver implements Constants{
 	 * @param index 当前的c在cs中的下标
 	 * @return
 	 */
-	public final static boolean matchSplitByOneWorld(char c,char[] cs,int index,TargetSet tar){
+	public final static boolean matchSplitByOneWorld(char c,char[] cs,int index,TextTargetSet tar){
 		for(char item:tar.getChar_split()){
 			if(item==c)
 				return true;
@@ -47,7 +47,7 @@ public class BaseTextResolver implements Constants{
 	 * @param index 当前的c在cs中的下标
 	 * @return
 	 */
-	public final static boolean matchSplitByStartAndEnd(char c,char[] cs,int index,TargetSet tar){
+	public final static boolean matchSplitByStartAndEnd(char c,char[] cs,int index,TextTargetSet tar){
 		for(char item:tar.getChar_split()){
 			if(item==c)
 				return true;
@@ -72,7 +72,7 @@ public class BaseTextResolver implements Constants{
 	 * @param content
 	 * @return
 	 */
-	public static final List<String> searchTextByStart(String content,TargetSet tar){
+	public static final List<String> searchTextByStart(String content,TextTargetSet tar){
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
@@ -105,7 +105,7 @@ public class BaseTextResolver implements Constants{
 	 * @param content
 	 * @return
 	 */
-	public static final List<String> searchTextByEnd(String content,TargetSet tar){
+	public static final List<String> searchTextByEnd(String content,TextTargetSet tar){
 		List<String> list = new ArrayList<String>();
 		String sub = null;
 		char[] chars = content.toCharArray();
@@ -139,7 +139,7 @@ public class BaseTextResolver implements Constants{
 	 * @param content
 	 * @return
 	 */
-	public static final List<String> searchTextByKey(String content,TargetSet tar){
+	public static final List<String> searchTextByKey(String content,TextTargetSet tar){
 		//System.out.println(content);
 		List<String> list = new ArrayList<String>();
 		String sub = null;
@@ -180,7 +180,7 @@ public class BaseTextResolver implements Constants{
 	 * @param content
 	 * @return
 	 */
-	private static final String subString(int start,int end,String content,TargetSet tar){
+	private static final String subString(int start,int end,String content,TextTargetSet tar){
 		if(end-start<1||end-start>=tar.getSub_length())
 			return "匹配内容太长或没有";
 		return new String(content.substring(start,end));

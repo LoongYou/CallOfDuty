@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.yu.callofduty.config.GeneralConfig;
+
 /**
  * 文件查找解析器
  * <p>
@@ -21,10 +23,10 @@ public class BaseFileResolver {
 	 * @param path
 	 * @return
 	 */
-	public static final List<File> findDirs(TargetSet tar) {
+	public static final List<File> findDirs(FileTargetSet tar) {
 		File[] list = null;
 		List<File> temp = new ArrayList<File>();
-		File file = new File(tar.getFile_path());
+		File file = new File(GeneralConfig.getFile_path());
 		list = file.listFiles(new FilenameFilter() {
 
 			@Override
@@ -51,10 +53,10 @@ public class BaseFileResolver {
 	 * @param path
 	 * @return
 	 */
-	public final static List<File> findFiles(TargetSet tar) {
+	public final static List<File> findFiles(FileTargetSet tar) {
 		File[] list = null;
 		List<File> temp = new ArrayList<File>();
-		File file = new File(tar.getFile_path());
+		File file = new File(GeneralConfig.getFile_path());
 		list = file.listFiles(new FilenameFilter() {
 
 			@Override
