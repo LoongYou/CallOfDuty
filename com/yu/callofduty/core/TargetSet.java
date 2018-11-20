@@ -2,7 +2,7 @@ package com.yu.callofduty.core;
 
 public class TargetSet {
 	/**处理目录*/
-	private String file_path = "D:\\workspace2\\CallOfDuty\\testfile";
+	private String file_path = "C:\\workspace2\\CallOfDuty\\testfile";
 
 	/**文件名结尾（含后缀）*/
 	private String file_end = ".java";

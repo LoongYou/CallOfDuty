@@ -135,7 +135,7 @@ public class BaseTextResolver implements Constants{
 	}
 	
 	/**
-	 * 查找文件中匹配的全量字符串,根据包含关键字查找
+	 * 查找文件中匹配的全量字符串,根据包含的关键字查找
 	 * @param content
 	 * @return
 	 */

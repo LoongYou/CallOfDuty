@@ -57,7 +57,7 @@ public class FileUtil implements Constants {
 	}
 
 	/**
-	 * 以字节读取文本，支持换行符
+	 * 以字节读取文本，支持换行符，用于支持逐行扫描
 	 * @param file
 	 * @return
 	 */
