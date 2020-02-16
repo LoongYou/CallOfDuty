@@ -8,13 +8,13 @@ package com.yu.callofduty.core;
 public class FileTargetSet extends BaseTargetSet{
 
 	/**文件名结尾（含后缀）*/
-	private String file_end = ".java";
+	private String file_end;
 
 	/**文件名开头*/
-	private String file_start = "";
+	private String file_start;
 
 	/**文件名包含*/
-	private String file_like = "";
+	private String file_like;
 
 	public String getFile_end() {
 		return file_end;

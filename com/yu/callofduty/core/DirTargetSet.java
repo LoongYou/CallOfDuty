@@ -7,13 +7,13 @@ package com.yu.callofduty.core;
  */
 public class DirTargetSet extends BaseTargetSet{
 	/**目录名结尾（含后缀）*/
-	private String dir_end = "";
+	private String dir_end;
 
 	/**目录名开头*/
-	private String dir_start = "";
+	private String dir_start;
 
 	/**目录名包含*/
-	private String dir_like = "";
+	private String dir_like;
 	 
 	 /**递归目录最大层数*/
 	private int dir_deep = 20;

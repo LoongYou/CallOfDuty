@@ -10,6 +10,16 @@ import com.yu.callofduty.core.XMLBuilder;
 public class TestMain {
 	static FileTargetSet tar = new FileTargetSet();
 	static TextTargetSet tts = new TextTargetSet();
+	static{
+		tar.setFile_end(".java");
+		//tar.setFile_like(file_like);
+		tts.setWord_start("import");
+		tts.setWord_end("}");
+		tts.setWord_like("new");
+		//tts.setChar_split();
+		tts.setWord_split(new String[]{";"});
+		tts.setXml_tag("item");
+	}
 	
 	
 	@Test
@@ -29,4 +39,8 @@ public class TestMain {
 		String content = XMLBuilder.toXml(BaseFileResolver.findFiles(tar),3,tar,tts);
 		System.out.println(content);
 	}
+	
+	
+	
+	
 }

@@ -11,6 +11,11 @@ import java.io.InputStream;
 
 import com.yu.callofduty.core.interfaces.Constants;
 
+/**
+ * 
+ * @author yl
+ *
+ */
 public class FileUtil implements Constants {
 	/**
 	 * 以行读取文件并返回文本,文本无换行
@@ -57,7 +62,7 @@ public class FileUtil implements Constants {
 	}
 
 	/**
-	 * 以字节读取文本，支持换行符，用于支持逐行扫描
+	 * 以字节读取文本，支持换行符，用于支持逐行扫描,推荐使用
 	 * @param file
 	 * @return
 	 */

@@ -8,6 +8,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.content.Demo1;
+
+import sun.awt.im.InputMethodManager;
+
 //1212
 import static org.junit.Assert.*;
 
