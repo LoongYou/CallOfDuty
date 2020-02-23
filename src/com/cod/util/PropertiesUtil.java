@@ -115,13 +115,13 @@ public class PropertiesUtil implements Log{
 	}
 	
 	/**
-	 * 将properties转换为map
+	 * 将properties copy到指定map
 	 * @param properties
 	 * @param map
 	 * @param cover
 	 * @return
 	 */
-	public static Map<String,String> propertiesToMap(Properties properties, final Map<String,String> map,boolean cover){
+	public static Map<String,String> propertiesCopyToMap(Properties properties, final Map<String,String> map,boolean cover){
 		
 		if(map==null) {
 			return map;

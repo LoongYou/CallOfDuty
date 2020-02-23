@@ -19,7 +19,7 @@ public class FileUtil implements Log{
 	/**
 	 * 获取目录下所有文件对象
 	 * @param path
-	 * @param endsWith
+	 * @param endsWith 匹配的后缀，为""则匹配所有
 	 * @return
 	 */
 	public static List<File> searchFile(String path,String endsWith){

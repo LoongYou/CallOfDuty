@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.cod.exception.CODException;
+
 /**
  * 日志扩展接口，仅需实现该接口即可为你的类增加日志打印的便捷方法
  * @author Yulong
@@ -90,6 +92,25 @@ public interface Log extends RSC{
 		log(LOG_ERROR, getInvokerDesc(3).append(concatMessage(objs)).toString());
 	}
 	
+	default void Error(String message,Throwable e) {
+		logger.error(message, e);
+	}
+	
+	default void Error(Throwable e) {
+		logger.error(e);
+	}
+	
+	default void ErrorEx(String message,Throwable e) throws CODException {
+		logger.error(e);
+		throw new CODException(message,e);
+	}
+	
+	default void ErrorEx(Throwable e) throws CODException {
+		logger.error(e);
+		throw new CODException(e);
+	}
+	
+	
 	static void debug(Object ...objs) {
 		log(LOG_DEBUG, getInvokerDesc(3).append(concatMessage(objs)).toString());
 	}
@@ -101,4 +122,23 @@ public interface Log extends RSC{
 	static void error(Object ...objs) {
 		log(LOG_ERROR, getInvokerDesc(3).append(concatMessage(objs)).toString());
 	}
+	
+	static void error(String message,Throwable t) {
+		logger.error(message, t);
+	}
+	
+	static void error(Throwable t) {
+		logger.error(t);
+	}
+	
+	static void errorEx(String message,Throwable e) throws CODException {
+		logger.error(e);
+		throw new CODException(message,e);
+	}
+	
+	static void errorEx(Throwable e) throws CODException {
+		logger.error(e);
+		throw new CODException(e);
+	}
+	
 }
