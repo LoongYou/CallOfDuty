@@ -170,7 +170,7 @@ public final class Configurations {
 	public static boolean createPluginSelfDir(String pluginName) throws IOException {
 		String pluginSelfPath = getPluginPropertiesPath(null)+pluginName;
 		logger.info("pluginSelfPath="+pluginSelfPath);
-		if(FileUtil.create(pluginSelfPath, false)==1) {
+		if(FileUtil.create(pluginSelfPath, FileUtil.IsDir)==1) {
 			return true;
 		}else {
 			return false;
