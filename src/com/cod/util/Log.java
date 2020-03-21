@@ -110,6 +110,10 @@ public interface Log extends RSC{
 		throw new CODException(e);
 	}
 	
+	default void ErrorEx(String message) throws CODException {
+		logger.error(message);
+		throw new CODException(message);
+	}
 	
 	static void debug(Object ...objs) {
 		log(LOG_DEBUG, getInvokerDesc(3).append(concatMessage(objs)).toString());
@@ -141,4 +145,8 @@ public interface Log extends RSC{
 		throw new CODException(e);
 	}
 	
+	static void errorEx(String message) throws CODException {
+		logger.error(message);
+		throw new CODException(message);
+	}
 }

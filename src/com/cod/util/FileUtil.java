@@ -76,15 +76,9 @@ public class FileUtil implements Log{
 				logger.info("create file="+path);
 				return Sucess;
 			}
-			if(type==IsDir && file.mkdirs()) {
-//				if(!path.endsWith("\\")||!path.endsWith("\\\\")) {
-//					path = path+"\\";
-//				}
-//				file = new File(path);
-//				if(file.mkdirs()) {					
-					logger.info("create dir="+path);
-					return Sucess;
-//				}
+			if(type==IsDir && file.mkdirs()) {				
+				logger.info("create dir="+path);
+				return Sucess;
 			}
 		}else {
 			Log.info("Can not create "+path+",because "+path+" is already exists!");
